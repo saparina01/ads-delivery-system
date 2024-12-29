@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ads_delivery.mapper.UserMapper">
+    <select id="findByUsername" resultType="com.ads_delivery.entity.User">
+        SELECT username, password, role
+        FROM users
+        WHERE username = #{username}
+    </select>
+
+    <!-- 插入用户 -->
+    <insert id="insertUser" parameterType="com.ads_delivery.entity.User">
+        INSERT INTO users (username, password, role)
+        VALUES (#{username}, #{password}, #{role})
+    </insert>
+
+
+
+</mapper>

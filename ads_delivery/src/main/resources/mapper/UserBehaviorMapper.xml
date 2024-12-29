@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ads_delivery.mapper.UserBehaviorMapper">
+
+    <!-- 添加用户行为 -->
+    <insert id="add" parameterType="com.ads_delivery.entity.UserBehavior">
+        INSERT INTO user_behavior (user_id, tags, behavior_type)
+        VALUES (#{user_id}, #{tags}, #{behavior_type});
+    </insert>
+
+    <!-- 根据ID删除用户行为 -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM user_behavior WHERE id = #{id};
+    </delete>
+
+    <!-- 更新用户行为 -->
+    <update id="update" parameterType="com.ads_delivery.entity.UserBehavior">
+        UPDATE user_behavior
+        SET user_id = #{user_id},
+            tags = #{tags},
+            behavior_type = #{behavior_type}
+        WHERE id = #{id};
+    </update>
+
+    <!-- 根据ID查询用户行为 -->
+    <select id="getById" parameterType="int" resultType="com.ads_delivery.entity.UserBehavior">
+        SELECT id, user_id, tags, behavior_type
+        FROM user_behavior
+        WHERE id = #{id};
+    </select>
+
+    <!-- 查询所有用户行为 -->
+    <select id="getAll" resultType="com.ads_delivery.entity.UserBehavior">
+        SELECT id, user_id, tags, behavior_type
+        FROM user_behavior;
+    </select>
+
+    <!-- 根据用户ID查询用户行为 -->
+    <select id="getByUserId" parameterType="String" resultType="com.ads_delivery.entity.UserBehavior">
+        SELECT id, user_id, tags, behavior_type
+        FROM user_behavior
+        WHERE user_id = #{user_id};
+    </select>
+
+</mapper>
