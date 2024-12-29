@@ -16,4 +16,8 @@ public class NewsService {
     public List<News> getNewsList(int limit, String category) {
         return newsDAO.getNewsList(limit, category);
     }
+
+    public List<News> searchNewsByKeyword(String keyword, int limit) {
+        return newsDAO.searchNewsByKeyword(keyword, limit);
+    }
 }

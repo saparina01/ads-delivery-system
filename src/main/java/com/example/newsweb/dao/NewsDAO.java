@@ -23,12 +23,25 @@ public class NewsDAO {
         Object[] params;
 
         if (category != null && !category.trim().isEmpty()) {
-            sql = "SELECT * FROM news WHERE category = ? ORDER BY id DESC LIMIT ?";
+            sql = "SELECT * FROM news WHERE category = ? ORDER BY id ASC LIMIT ?";
             params = new Object[]{category, limit};
         } else {
-            sql = "SELECT * FROM news ORDER BY id DESC LIMIT ?";
+            sql = "SELECT * FROM news ORDER BY id ASC LIMIT ?";
             params = new Object[]{limit};
         }
+
+        return jdbcTemplate.query(sql, params, new NewsRowMapper());
+    }
+
+    // 根据关键词搜索新闻
+    public List<News> searchNewsByKeyword(String keyword, int limit) {
+        String sql = "SELECT * FROM news WHERE title LIKE ? OR summary LIKE ? OR tag LIKE ? ORDER BY id DESC LIMIT ?";
+        Object[] params = new Object[]{
+                "%" + keyword + "%",
+                "%" + keyword + "%",
+                "%" + keyword + "%",
+                limit
+        };
 
         return jdbcTemplate.query(sql, params, new NewsRowMapper());
     }
