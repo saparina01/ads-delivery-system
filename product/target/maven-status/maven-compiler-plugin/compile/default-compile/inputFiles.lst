@@ -1,0 +1,12 @@
+D:\JAVA\finalwork\product\src\main\java\com\example\product\Controller\BehaviorController.java
+D:\JAVA\finalwork\product\src\main\java\com\example\product\Controller\ProductController.java
+D:\JAVA\finalwork\product\src\main\java\com\example\product\Entity\Product.java
+D:\JAVA\finalwork\product\src\main\java\com\example\product\Entity\User.java
+D:\JAVA\finalwork\product\src\main\java\com\example\product\Entity\UserScore.java
+D:\JAVA\finalwork\product\src\main\java\com\example\product\Model\UserBehavior.java
+D:\JAVA\finalwork\product\src\main\java\com\example\product\ProductApplication.java
+D:\JAVA\finalwork\product\src\main\java\com\example\product\Repository\ProductRepository.java
+D:\JAVA\finalwork\product\src\main\java\com\example\product\Repository\UserScoreRepository.java
+D:\JAVA\finalwork\product\src\main\java\com\example\product\Service\BehaviorService.java
+D:\JAVA\finalwork\product\src\main\java\com\example\product\Service\ProductService.java
+D:\JAVA\finalwork\product\src\main\java\com\example\product\WebMvcConfig.java
