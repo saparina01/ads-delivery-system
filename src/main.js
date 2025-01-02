@@ -1,12 +1,12 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
+import './style.css'
 import App from './App.vue'
-import ElementUI from "element-ui";
-import "element-ui/lib/theme-chalk/index.css";
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+import 'font-awesome/css/font-awesome.min.css'
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/css';
 
-Vue.use(ElementUI)
-
-Vue.config.productionTip = false
-
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+const app = createApp(App)
+app.use(ElementPlus)
+app.mount('#app')
