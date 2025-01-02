@@ -8,11 +8,11 @@ import java.util.List;
 @Mapper
 public interface AdsMapper {
     void add(Ads ads);
-    void delete(int ad_id);
+    void delete(String adId);
     void update(Ads ads);
-    Ads getById(int ad_id);
+    void click(String adId);
     List<Ads> getAll();
-    List<Ads> getByUsername(String belong_username);
+    List<Ads> getByUsername(String belongUsername);
     List<Ads> getByImage(String image);
-    List<Ads> getByTags(String tags);
+    List<Ads> getByTags(String tags); // 添加 tags 查询方法
 }

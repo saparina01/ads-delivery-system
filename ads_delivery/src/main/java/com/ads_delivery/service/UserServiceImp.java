@@ -20,8 +20,6 @@ public class UserServiceImp implements UserService {
         }
         user.setRole("ADVERTISER");
 //        user.setRole("SITE_OWNER");
-
-
         // 插入用户
         userMapper.insertUser(user);
         return "注册成功";
@@ -31,7 +29,7 @@ public class UserServiceImp implements UserService {
     public String login(User user) {
         // 根据用户名查找用户
         User existingUser = userMapper.findByUsername(user.getUsername());
-
+        System.out.println("login");
         if (existingUser == null) {
             return "用户不存在";
         }
