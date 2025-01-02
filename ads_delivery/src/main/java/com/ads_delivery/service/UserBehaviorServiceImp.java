@@ -13,33 +13,32 @@ public class UserBehaviorServiceImp implements UserBehaviorService {
     UserBehaviorMapper userBehaviorMapper;
 
     @Override
-    public boolean insertUserBehavior(UserBehavior userBehavior) {
+    public void insertUserBehavior(UserBehavior userBehavior) {
 //        click：用户点击行为（如点击商品或新闻）。2
 //        view：用户浏览行为（如浏览商品详情页、新闻正文）。1
 //        purchase：用户购买行为（仅适用于购物网站）。4
 //        search：用户搜索行为（如搜索商品、新闻）3
         try{
-            switch(userBehavior.getBehavior_type()){
+            switch(userBehavior.getBehaviorType()){
                 case "click":
-                    userBehavior.setBehavior_weight(2);
+                    userBehavior.setBehaviorWeight(2);
                     break;
                 case "purchase":
-                    userBehavior.setBehavior_weight(4);
+                    userBehavior.setBehaviorWeight(4);
                     break;
                 case "search":
-                    userBehavior.setBehavior_weight(3);
+                    userBehavior.setBehaviorWeight(3);
                     break;
                 case "view":
-                    userBehavior.setBehavior_weight(1);
+                    userBehavior.setBehaviorWeight(1);
                     break;
                 default:
-                    userBehavior.setBehavior_weight(0);
+                    userBehavior.setBehaviorWeight(0);
                     break;
             }
             userBehaviorMapper.add(userBehavior);
-            return true;
+            System.out.println("mapper");
         }catch(Exception e){
-            return false;
         }
     }
 

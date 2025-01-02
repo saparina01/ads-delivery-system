@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ads_delivery.mapper.AdsMapper">
-    <insert id="insert" parameterType="com.ads_delivery.entity.Ads">
-        INSERT INTO ads (ad_id,title,image,details)
-        VALUES (#{ad_id}, #{title}, #{image},#{details})
-    </insert>
 
     <!-- 添加广告 -->
     <insert id="add" parameterType="com.ads_delivery.entity.Ads">
-        INSERT INTO ads (title, image, details, tags, belong_username, click_count)
-        VALUES (#{title}, #{image}, #{details}, #{tags}, #{belong_username}, #{click_count});
+        INSERT INTO ads (adId, title, image, details, tags, belongUsername)
+        VALUES (#{adId}, #{title}, #{image}, #{details}, #{tags}, #{belongUsername});
     </insert>
 
     <!-- 根据广告ID删除广告 -->
-    <delete id="delete" parameterType="int">
-        DELETE FROM ads WHERE ad_id = #{ad_id};
+    <delete id="delete" parameterType="String">
+        DELETE FROM ads WHERE adId = #{adId};
     </delete>
 
     <!-- 更新广告 -->
@@ -24,36 +20,43 @@
             image = #{image},
             details = #{details},
             tags = #{tags},
-            belong_username = #{belong_username},
-            click_count = #{click_count}
-        WHERE ad_id = #{ad_id};
+            belongUsername = #{belongUsername},
+            clickCount = #{clickCount}
+        WHERE adId = #{adId};
     </update>
 
     <!-- 根据广告ID查询广告 -->
-    <select id="getById" parameterType="int" resultType="com.ads_delivery.entity.Ads">
-        SELECT ad_id, title, image, details, tags, belong_username, click_count
-        FROM ads
-        WHERE ad_id = #{ad_id};
-    </select>
+    <update id="click" parameterType="String">
+        UPDATE ads
+        SET clickCount = clickCount+1
+        WHERE adId = #{adId};
+    </update>
 
     <!-- 查询所有广告 -->
     <select id="getAll" resultType="com.ads_delivery.entity.Ads">
-        SELECT ad_id, title, image, details, tags, belong_username, click_count
+        SELECT adId, title, image, details, tags, belongUsername, clickCount
         FROM ads;
     </select>
 
     <!-- 根据广告所属用户名查询广告 -->
     <select id="getByUsername" parameterType="String" resultType="com.ads_delivery.entity.Ads">
-        SELECT ad_id, title, image, details, tags, belong_username, click_count
+        SELECT adId, title, image, details, tags, belongUsername, clickCount
         FROM ads
-        WHERE belong_username = #{belong_username};
+        WHERE belongUsername = #{belongUsername};
     </select>
 
+    <!-- 根据广告图像查询广告 -->
     <select id="getByImage" parameterType="String" resultType="com.ads_delivery.entity.Ads">
-        SELECT ad_id, title, image, details, tags, belong_username, click_count
+        SELECT adId, title, image, details, tags, belongUsername, clickCount
         FROM ads
         WHERE image = #{image};
     </select>
 
-</mapper>
+    <!-- 根据广告标签查询广告 -->
+    <select id="getByTags" parameterType="String" resultType="com.ads_delivery.entity.Ads">
+        SELECT adId, title, image, details, tags, belongUsername, clickCount
+        FROM ads
+        WHERE tags LIKE CONCAT('%', #{tags}, '%');
+    </select>
 
+</mapper>
