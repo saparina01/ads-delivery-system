@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8088/api/auth';
+const API_URL = 'http://101.43.72.79:8081/api/auth';
 
 // 注册请求
 export const register = async (userData) => {
